@@ -1,0 +1,44 @@
+<button type="button" onclick="location.href='/'">go home</button>
+
+<h1>Orders</h1>
+<ul>
+  <li *ngFor="let order of orders">
+    <a routerLink="/order/{{ order.id }}">
+      <span>id: {{ order.id }}</span>
+      <span> {{ order.carId }} </span>
+      <span> {{ order.problemDescription }}</span>
+      <span> {{ order.status }}</span>
+    </a>
+    <span>Change status</span>
+    <button (click)="setOrderStatus(order.id, 'ACCEPTED')">Accepted</button>
+    <button (click)="setOrderStatus(order.id, 'IN_PROCESS')">In Process</button>
+    <button (click)="setOrderStatus(order.id, 'COMPLETED')">Completed</button>
+    <button (click)="setOrderStatus(order.id, 'FAIL_COMPLETED')">Fail completed</button>
+    <button (click)="setOrderStatus(order.id, 'PAID_FOR')">Paid for</button>
+
+  </li>
+</ul>
+
+<h2>Create new order</h2>
+<form>
+  <label for="new-order-carId">CarId: </label>
+  <input type="number" id="new-order-carId" #orderCarId/>
+
+  <label for="new-order-problemDescription">Problem description</label>
+  <input id="new-order-problemDescription" #orderProblemDescription/>
+
+  <label for="new-order-acceptanceDate">Acceptance date: </label>
+  <input type="date" id="new-order-acceptanceDate" #orderAcceptanceDate />
+
+  <label for="new-order-completeDate">Complete date: </label>
+  <input type="date" id="new-order-completeDate" #orderCompleteDate />
+
+  <button type="button"
+          (click)="addOrder(orderCarId.valueAsNumber, orderProblemDescription.value,
+           [], [],
+             orderAcceptanceDate.valueAsDate, orderCompleteDate.valueAsDate);
+             orderCarId.value=''; orderProblemDescription.value='';
+             orderAcceptanceDate.value=''; orderCompleteDate.value=''">
+    Create
+  </button>
+</form>

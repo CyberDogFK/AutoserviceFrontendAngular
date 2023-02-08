@@ -1,0 +1,22 @@
+<button type="button" onclick="location.href='/'">go home</button>
+
+<h1>Masters</h1>
+<ul>
+  <li *ngFor="let master of masters">
+    <a routerLink="/master/{{ master.id }}">
+      <span>{{ master.id }} </span>
+      <span>{{ master.name }}</span>
+    </a>
+  </li>
+</ul>
+
+<h2>Create new master</h2>
+<div>
+  <label for="new-master-name">Name: </label>
+  <input id="new-master-name" #masterName/>
+
+  <button type="button"
+          (click)="add(masterName.value, []); masterName.value=''">
+    Add master
+  </button>
+</div>

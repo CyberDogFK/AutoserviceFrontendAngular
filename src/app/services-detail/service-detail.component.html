@@ -1,0 +1,20 @@
+<button type="button" (click)="goBack()">go back</button>
+
+<div *ngIf="service">
+  <h1>{{ service.name }} details</h1>
+  <h2>Id: {{service.id }}</h2>
+  <div>
+    <label for="service-name">Name: </label>
+    <input id="service-name" [(ngModel)]="service.name" placeholder="name"/>
+
+    <label for="service-master">MasterId: </label>
+    <input id="service-master" [(ngModel)]="service.masterId" placeholder="masterId"/>
+
+    <label for="service-price">Price: </label>
+    <input id="service-price" [(ngModel)]="service.price" placeholder="price"/>
+
+    <label for="service-status">Status: </label>
+    <input id="service-status" [(ngModel)]="service.status" placeholder="status"/>
+  </div>
+  <button type="button" (click)="update()">Save</button>
+</div>

@@ -1,0 +1,13 @@
+<button type="button" (click)="goBack()">go back</button>
+
+<div *ngIf="article">
+  <h2>{{ article.name }} details</h2>
+  <div>ID: {{article.id}}</div>
+  <div>
+    <label for="article-name">Name: </label>
+    <input id="article-name" [(ngModel)]="article.name" placeholder="name"/>
+    <label for="article-price">Price: </label>
+    <input type="number" id="article-price" [(ngModel)]="article.price" placeholder="price"/>
+  </div>
+  <button type="button" (click)="update()">Save</button>
+</div>
