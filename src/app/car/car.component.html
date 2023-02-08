@@ -1,0 +1,40 @@
+<button type="button" onclick="location.href='/'">go home</button>
+
+<h1>Cars</h1>
+<ul>
+  <li *ngFor="let car of cars">
+    <a routerLink="/car/{{ car.id }}">
+      <span>{{ car.id }}. </span>
+      <span>{{ car.brand }} = </span>
+      <span>{{ car.model }} </span>
+      <span>{{ car.year }} </span>
+      <span>{{ car.regNumber }} </span>
+      <span>{{ car.ownerId }}</span>
+    </a>
+  </li>
+</ul>
+
+<h2>Create new car</h2>
+<div>
+  <label for="new-car-brand">Brand: </label>
+  <input id="new-car-brand" #carBrand/>
+
+  <label for="new-car-model">Model: </label>
+  <input id="new-car-model" #carModel/>
+
+  <label for="new-car-year">Year: </label>
+  <input id="new-car-year" type="number" #carYear/>
+
+  <label for="new-car-regNumber">Registration number: </label>
+  <input id="new-car-regNumber" #carRegNumber/>
+
+  <label for="new-car-ownerId">Owner id: </label>
+  <input id="new-car-ownerId" type="number" #carOwnerId/>
+
+  <button type="button"
+          (click)="add(carBrand.value, carModel.value, carYear.valueAsNumber,
+                        carRegNumber.value, carOwnerId.valueAsNumber);
+          carBrand.value=''; carModel.value=''; carYear.value=''; carRegNumber.value=''; carOwnerId.value=''">
+    Add car
+  </button>
+</div>

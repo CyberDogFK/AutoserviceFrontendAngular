@@ -1,0 +1,27 @@
+<button type="button" onclick="location.href='/'">go home</button>
+
+<h1>Articles</h1>
+<ul>
+  <li *ngFor="let article of articles">
+    <a routerLink="/article/{{ article.id }}">
+      <span>{{ article.id }}. </span>
+      <span>{{ article.name }} = </span>
+      <span>{{ article.price }}</span>
+    </a>
+  </li>
+</ul>
+
+<h2>Create new article</h2>
+<div>
+  <label for="new-article-name">Name: </label>
+  <input id="new-article-name" #articleName/>
+
+  <label for="new-article-price">Price: </label>
+  <input id="new-article-price" type="number" #articlePrice/>
+
+  <button type="button"
+          (click)="add(articleName.value, articlePrice.valueAsNumber);
+          articleName.value=''; articlePrice.value=''">
+    Add article
+  </button>
+</div>

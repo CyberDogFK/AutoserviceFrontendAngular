@@ -1,0 +1,22 @@
+<button type="button" (click)="goBack()">Go back</button>
+
+<div *ngIf="master">
+  <h2>{{ master.name }} details</h2>
+  <div>ID: {{ master.id }}</div>
+  <div>
+    <label for="master-name">Name: </label>
+    <input id="master-name" [(ngModel)]="master.name" placeholder="name"/>
+
+    <label>Solved orders: </label>
+    <p>{{ master.solvedOrderIds}}</p>
+    <ul>
+      <li *ngFor="let order of orders">
+        <span>{{ order.id }} </span>
+        <span>{{ order.problemDescription }}</span>
+      </li>
+    </ul>
+  </div>
+  <button type="button" (click)="update()">Save</button>
+</div>
+<button type="button" (click)='getSalary()' >Get salary</button>
+<span>salary: {{ salary }}</span>

@@ -1,0 +1,37 @@
+<button type="button" onclick="location.href='/'">go home</button>
+
+<h1>Services</h1>
+<ul>
+  <li *ngFor="let service of services">
+    <a routerLink="/service/{{ service.id  }}">
+      <span>id: {{service.id}} </span>
+      <span>{{ service.name }} </span>
+      <span>MasterId: {{ service.masterId }} </span>
+      <span>Price: {{ service.price }} </span>
+      <span>{{ service.status }}</span>
+    </a>
+    <button (click)="setPaidStatus(service.id)">Set Paid status</button>
+    <button (click)="setNonPaidStatus(service.id)">Set Non Paid status</button>
+  </li>
+</ul>
+
+<h2>Create new service</h2>
+<div>
+  <label for="new-service-name">Name: </label>
+  <input id="new-service-name" #serviceName/>
+
+  <label for="new-service-master">Master: </label>
+  <input id="new-service-master" type="number" #serviceMasterId/>
+
+  <label for="new-service-price">Price: </label>
+  <input id="new-service-price" type="number" #servicePrice/>
+
+  <label for="new-service-status">Status: </label>
+  <input id="new-service-status" #serviceStatus>
+
+  <button type="button"
+          (click)="add(serviceName.value, serviceMasterId.valueAsNumber, servicePrice.valueAsNumber, serviceStatus.value);
+          serviceName.value=''; serviceMasterId.value=''; servicePrice.value=''; serviceStatus.value=''">
+    Add service
+  </button>
+</div>

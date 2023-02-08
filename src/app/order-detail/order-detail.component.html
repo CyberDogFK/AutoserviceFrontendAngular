@@ -1,0 +1,27 @@
+<button type="button" (click)="goBack()">go back</button>
+
+<div *ngIf="order">
+  <h2>Order {{ order.id }}</h2>
+  <p>{{ order.problemDescription }}</p>
+
+  <form (ngSubmit)="update()">
+    <label for="order-carId">CarId: </label>
+    <input type="number" id="order-carId" name="carId" [(ngModel)]="order.carId" placeholder="carId"/>
+
+    <label for="order-description">Description: </label>
+    <input id="order-description" name="order-description"
+           [(ngModel)]="order.problemDescription"
+           placeholder="problemDescription"/>
+
+    <label for="order-status">Order status: </label>
+    <input id="order-status" name="status" [(ngModel)]="order.status" placeholder="STATUS"/>
+
+    <label for="order-acceptedDate">Accepted Date: </label>
+    <input type="date" id="order-acceptedDate" name="acceptedDate"
+           [(ngModel)]="order.acceptanceDate"
+           placeholder="{{ order.acceptanceDate}}"/>
+    <button type="submit">Submit</button>
+  </form>
+
+  <button type="button" (click)="update()">Save</button>
+</div>

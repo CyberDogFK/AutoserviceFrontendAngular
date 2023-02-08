@@ -1,0 +1,21 @@
+<button type="button" (click)="goBack()">go back</button>
+
+<div *ngIf="car">
+  <h2>{{ car.brand }} {{ car.model }}, of {{ car.ownerId }} details</h2>
+  <div>ID: {{car.id}}</div>
+  <div>
+    <label for="car-brand">Brand: </label>
+    <input id="car-brand" [(ngModel)]="car.brand" placeholder="name"/>
+
+    <label for="car-model">Model: </label>
+    <input id="car-model" [(ngModel)]="car.model" placeholder="brand"/>
+
+    <label for="car-year">Year: </label>
+    <input type="number" id="car-year" [(ngModel)]="car.year" placeholder="year"/>
+
+    <label for="car-regNumber">Registration number: </label>
+    <input id="car-regNumber" [(ngModel)]="car.regNumber" placeholder="regNumber"/>
+
+  </div>
+  <button type="button" (click)="update()">Save</button>
+</div>

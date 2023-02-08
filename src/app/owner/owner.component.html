@@ -1,0 +1,20 @@
+<button type="button" onclick="location.href='/'">go home</button>
+
+<h1>Owner</h1>
+<ul>
+  <li *ngFor="let owner of owners">
+    <a routerLink="/owner/{{ owner.id }}">
+      <span>{{ owner.id }}. </span>
+      <span>Cars: [{{ owner.carsIds }}] </span>
+      <span>Orders: [{{ owner.ordersIds }}]</span>
+    </a>
+  </li>
+</ul>
+
+<h2>Create new owner</h2>
+<div>
+  <button type="button"
+          (click)="add([], []);">
+    Add new owner
+  </button>
+</div>
