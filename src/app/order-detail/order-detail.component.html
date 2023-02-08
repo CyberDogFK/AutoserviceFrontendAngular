@@ -4,23 +4,58 @@
   <h2>Order {{ order.id }}</h2>
   <p>{{ order.problemDescription }}</p>
 
-  <form (ngSubmit)="update()">
+  <form [formGroup]="form">
     <label for="order-carId">CarId: </label>
-    <input type="number" id="order-carId" name="carId" [(ngModel)]="order.carId" placeholder="carId"/>
+    <input type="number" id="order-carId" name="carId" [(ngModel)]="order.carId" [ngModelOptions]="{standalone: true}"
+           placeholder="carId"/>
 
     <label for="order-description">Description: </label>
-    <input id="order-description" name="order-description"
-           [(ngModel)]="order.problemDescription"
+    <input id="order-description"
+           [(ngModel)]="order.problemDescription" [ngModelOptions]="{standalone: true}"
            placeholder="problemDescription"/>
 
     <label for="order-status">Order status: </label>
-    <input id="order-status" name="status" [(ngModel)]="order.status" placeholder="STATUS"/>
+    <input id="order-status" name="status" [(ngModel)]="order.status" [ngModelOptions]="{standalone: true}"
+           placeholder="STATUS"/>
 
-    <label for="order-acceptedDate">Accepted Date: </label>
+    <label for="order-acceptedDate">Accepted Date: {{ order.acceptanceDate | date: 'yyyy-MM-dd'}}</label>
     <input type="date" id="order-acceptedDate" name="acceptedDate"
-           [(ngModel)]="order.acceptanceDate"
-           placeholder="{{ order.acceptanceDate}}"/>
-    <button type="submit">Submit</button>
+           [formControlName]="'acceptanceDate'"/>
+
+    <label for="order-completeDate">Complete Date: {{ order.completedDate | date: 'yyyy-MM-dd'}}</label>
+    <input type="date" id="order-completeDate" name="completeDate"
+           [formControlName]="'completeDate'"/>
+
+    <div>
+      <h3>Services id: </h3>
+      <ul>
+        <li *ngFor="let service of order.servicesIds">
+          <span>{{service}}</span>
+          <button (click)="removeService(service)">remove</button>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <input type="number" placeholder="serviceId" #serviceId/>
+    </div>
+    <button (click)="addService(serviceId.valueAsNumber)">Add service</button>
+
+    <div>
+      <h3>Articles id: </h3>
+      <ul>
+        <li *ngFor="let article of order.articlesIds">
+          <span>{{ article }}</span>
+          <button (click)="removeArticle(article)">remove</button>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <input type="number" placeholder="articleId" #articleId/>
+    </div>
+    <button (click)="addArticle(articleId.valueAsNumber)">Add article</button>
+    <br>
   </form>
 
   <button type="button" (click)="update()">Save</button>
