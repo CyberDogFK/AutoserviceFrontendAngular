@@ -63,6 +63,7 @@ export class OrderDetailComponent implements OnInit {
       this.orderService.updateOrder(this.order)
         .subscribe(order => this.order = order);
     }
+    this.goBack();
   }
 
   removeService(id: number): void {

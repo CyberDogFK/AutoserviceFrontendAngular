@@ -39,7 +39,7 @@
     <div>
       <input type="number" placeholder="serviceId" #serviceId/>
     </div>
-    <button (click)="addService(serviceId.valueAsNumber)">Add service</button>
+    <button (click)="addService(serviceId.valueAsNumber); serviceId.value=''">Add service</button>
 
     <div>
       <h3>Articles id: </h3>
@@ -54,7 +54,7 @@
     <div>
       <input type="number" placeholder="articleId" #articleId/>
     </div>
-    <button (click)="addArticle(articleId.valueAsNumber)">Add article</button>
+    <button (click)="addArticle(articleId.valueAsNumber); articleId.value=''">Add article</button>
     <br>
   </form>
 
