@@ -15,9 +15,15 @@
     <button (click)="setOrderStatus(order.id, 'COMPLETED')">Completed</button>
     <button (click)="setOrderStatus(order.id, 'FAIL_COMPLETED')">Fail completed</button>
     <button (click)="setOrderStatus(order.id, 'PAID_FOR')">Paid for</button>
-
   </li>
 </ul>
+
+<div>
+  <h2>Get price with discount of</h2>
+  <input type="number" #orderId>
+  <button (click)="getPrice(orderId.valueAsNumber)">Show</button>
+  <div> {{ price }}</div>
+</div>
 
 <h2>Create new order</h2>
 <form>

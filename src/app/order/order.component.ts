@@ -12,9 +12,10 @@ import {formatDate} from "@angular/common";
 })
 export class OrderComponent implements OnInit {
   orders: OrderResponseDto[] = [];
+  price?: string;
 
   constructor(
-    private orderService: OrderService,
+    public orderService: OrderService,
   ) {}
 
   ngOnInit() {
@@ -53,6 +54,16 @@ export class OrderComponent implements OnInit {
     let status = statusString as OrderStatus;
     this.orderService.updateOrderStatus(id, status)
       .subscribe(() => this.ngOnInit());
+  }
+
+  getPrice(id: number): string {
+    let result = '';
+    this.orderService.getOrderPrice(id)
+      .subscribe((value) => {
+        this.price = value.toString();
+        result = value.toString();
+      });
+    return result;
   }
 
   sort(): void {

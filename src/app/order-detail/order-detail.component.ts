@@ -51,19 +51,15 @@ export class OrderDetailComponent implements OnInit {
         this.form.patchValue({
           acceptanceDate: formatDate(date, 'yyyy-MM-dd', 'en-US').trim()
         })
-        console.log('acceptance')
         this.order.acceptanceDate = this.form.value['acceptanceDate'];
-        console.log('acceptance')
       }
       if (this.form.value['completeDate'].value) {
         const date = new Date((this.form.value['completeDate']));
         this.form.patchValue({
           completeDate: formatDate(date, 'yyyy-MM-dd', 'en-US').trim()
         })
-        console.log('complete')
         this.order.completedDate = this.form.value['completeDate'];
       }
-      console.log(this.form.value['acceptanceDate'])
       this.orderService.updateOrder(this.order)
         .subscribe(order => this.order = order);
     }

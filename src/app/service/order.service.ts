@@ -64,7 +64,7 @@ export class OrderService {
       );
   }
 
-  getOrderPrice(id: bigint): Observable<number> {
+  getOrderPrice(id: number): Observable<number> {
     const url = `${this.ordersUrl}/${id}/price`;
 
     return this.http.get<number>(url)
