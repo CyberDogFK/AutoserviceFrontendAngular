@@ -8,7 +8,7 @@ import { CarComponent } from './car/car.component';
 import { TempComponent } from './temp/temp.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
-import { FormGroup, FormsModule} from "@angular/forms";
+import {FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CarDetailComponent } from './car-detail/car-detail.component';
 import { MasterComponent } from './master/master.component';
 import { MasterDetailComponent } from './master-detail/master-detail.component';
@@ -41,6 +41,7 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
   ],
